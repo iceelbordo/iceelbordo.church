@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@chakra-ui/nuxt": "^0.3.3",
+    "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/emotion": "^0.1.0",
     "core-js": "^3.15.1",
     "howler": "^2.2.3",

@@ -39,7 +39,16 @@ export default {
     '@chakra-ui/nuxt',
     // https://go.nuxtjs.dev/emotion
     '@nuxtjs/emotion',
+    '@nuxtjs/apollo',
   ],
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.GRAPHQL_URL || 'http://localhost:1337/graphql',
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
