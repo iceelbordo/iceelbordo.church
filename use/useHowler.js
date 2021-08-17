@@ -1,10 +1,10 @@
 const { Howl } = require('howler')
 
-export function useHowler (src, onprogress, onplay) {
+export function useHowler(jsonHowler) {
   const onTimeout = () => {
-    let status = undefined
-    if (onprogress !== undefined) {
-      status = onprogress()
+    let status
+    if (jsonHowler.onprogress !== undefined) {
+      status = jsonHowler.onprogress()
     }
     if (status === 0) {
       setTimeout(onTimeout, 500)
@@ -12,20 +12,26 @@ export function useHowler (src, onprogress, onplay) {
   }
 
   const howl = new Howl({
-    src: src,
+    src: jsonHowler.src,
     onplay: onTimeout,
     onload: () => {
       howlState.loaded = true
 
       howl.on('play', () => {
         howlState.playing = true
-        if (onplay !== undefined) {
-          onplay()
+        if (jsonHowler.onplay !== undefined) {
+          jsonHowler.onplay()
         }
       })
-      howl.on('end', () => howlState.playing = false)
-      howl.on('pause', () => howlState.playing = false)
-      howl.on('stop', () => howlState.playing = false)
+      howl.on('end', () =>  {
+        howlState.playing = false
+      })
+      howl.on('pause', () => {
+        howlState.playing = false
+      })
+      howl.on('stop', () => {
+        howlState.playing = false
+      })
     }
   })
 
@@ -42,7 +48,7 @@ export function useHowler (src, onprogress, onplay) {
     howl.pause()
   }
 
-  const seek = (per) => per === undefined ? howl.seek() : howl.seek(per)
+  const seek = (percentage) => percentage === undefined ? howl.seek() : howl.seek(percentage)
 
   const playedHours = () => {
     let lastHours = 0
@@ -67,7 +73,7 @@ export function useHowler (src, onprogress, onplay) {
     if (!howl.playing()) {
       return lastSeconds.toString().padStart(2, '0')
     }
-    lastSeconds = howl.seek() % 60
+    lastSeconds = Math.floor(howl.seek() % 60)
     return lastSeconds.toString().padStart(2, '0')
   }
 

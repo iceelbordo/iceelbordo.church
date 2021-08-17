@@ -1,12 +1,12 @@
 import Plyr from 'plyr'
 
-export function usePlyr (selector = '#player') {
-  let player = undefined
+export function usePlyr(jsonPlyr) {
+  let player
   let forceStop = false
 
   const play = (embedID) => {
     if (player === undefined) {
-      player = new Plyr(selector, { autoplay: true })
+      player = new Plyr(jsonPlyr.selector, { autoplay: true })
       player.on('playing', onplaying)
     }
 

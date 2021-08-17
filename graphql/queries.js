@@ -29,6 +29,7 @@ export const sermonsQuery = gql`
     sermons(limit: $limit, start: $start) {
       id,
       title,
+      description,
       audio {
         url,
         metadata

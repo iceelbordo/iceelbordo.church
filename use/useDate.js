@@ -1,4 +1,4 @@
-export function useDate(value = Date.now()) {
+export function useDate(jsonDate) {
   const months = [
     'ene',
     'feb',
@@ -13,7 +13,7 @@ export function useDate(value = Date.now()) {
     'nov',
     'dic'
   ]
-  const date = new Date(value)
+  const date = new Date(jsonDate.value)
 
   const day = () => date.getUTCDate()
 
