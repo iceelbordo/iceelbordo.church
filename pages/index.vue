@@ -1,167 +1,177 @@
 <template>
-  <div class="container">
-    <CBox
-      v-bind="mainStyles[colorMode]"
-      d="flex"
-      w="100vw"
-      h="100vh"
-      flex-dir="column"
-      justify-content="center"
-    >
-      <CHeading text-align="center" mb="4">
-        ⚡️ Hello chakra-ui/vue
-      </CHeading>
-      <CFlex justify="center" direction="column" align="center">
-        <CBox mb="3">
-          <CIconButton
-            mr="3"
-            :icon="colorMode === 'light' ? 'moon' : 'sun'"
-            :aria-label="`Switch to ${
-              colorMode === 'light' ? 'dark' : 'light'
-            } mode`"
-            @click="toggleColorMode"
-          />
-          <CButton
-            left-icon="info"
-            variant-color="blue"
-            @click="showToast"
-          >
-            Show Toast
-          </CButton>
-        </CBox>
-        <CAvatarGroup>
-          <CAvatar
-            name="Evan You"
-            alt="Evan You"
-            src="https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Jonathan Bakebwa"
-            alt="Jonathan Bakebwa"
-            src="https://res.cloudinary.com/xtellar/image/upload/v1572857445/me_zqos4e.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Segun Adebayo"
-            alt="Segun Adebayo"
-            src="https://pbs.twimg.com/profile_images/1169353373012897802/skPUWd6e_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar src="pop">
-            <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
-          </CAvatar>
-        </CAvatarGroup>
-        <CButton
-          left-icon="close"
-          variant-color="red"
-          mt="3"
-          @click="showModal = true"
+  <base-layout>
+    <template name="nav">
+      <navbar />
+    </template>
+    <template>
+      <container
+        pt="20"
+        pb="4"
+      >
+        <c-flex
+          :flexDirection="[
+            'column', // base
+            'column', // sm
+            'column', // md
+            'row',    // lg
+          ]"
+          minHeight="100vh"
+          alignItems="center"
         >
-          Delete Account
-        </CButton>
-        <CModal :is-open="showModal">
-          <CModalOverlay />
-          <CModalContent>
-            <CModalHeader>Are you sure?</CModalHeader>
-            <CModalBody>Deleting user cannot be undone</CModalBody>
-            <CModalFooter>
-              <CButton @click="showModal = false">
-                Cancel
-              </CButton>
-              <CButton
-                margin-left="3"
-                variant-color="red"
-                @click="showModal = false"
+          <c-flex>
+            <c-stack
+              color="gray.900"
+            >
+              <c-text
+                fontSize="6xl"
               >
-                Delete User
-              </CButton>
-            </CModalFooter>
-            <CModalCloseButton @click="showModal = false" />
-          </CModalContent>
-        </CModal>
-      </CFlex>
-    </CBox>
-  </div>
+                {{ home.verse }}
+              </c-text>
+              <c-text
+                as="i"
+                fontSize="3xl"
+              >
+                {{ home.bookAbbreviation }} {{ home.chapterNumber }}:{{ home.verseNumber }}
+              </c-text>
+            </c-stack>
+          </c-flex>
+          <c-flex
+            minWidth="36rem"
+          >
+            <svg class="h-144 w-144" viewBox="0 0 24 24">
+              <g transform="translate(1.114 1.373) scale(.01421)" fill="#f9f9f9">
+                <defs>
+                  <clipPath id="yv9b">
+                    <path d="M0 0h579.064v545.452H0z" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#yv9b)" transform="matrix(2.5783 0 0 2.57768 7 28)">
+                  <g data-name="Background">
+                    <path d="M148.442 523.04C100.206 515 58.9 488.634 36.99 448.406a127.872 127.872 0 01-4.36-113.382c19.746-43.656 62.193-75 97.068-110.216a423.732 423.732 0 0072.931-98.61c8.5-15.956 13.163-36.129 26.108-49.375 14-14.325 29.724-25.95 49.1-34.035 39.129-16.323 84.267-18.051 126.838-11.728 34.327 5.1 68.108 15.424 96.649 33.283 28.541 17.859 51.578 43.658 61.1 73.691 9.522 30.033 5.417 57.827-15.561 82.739-30.477 36.192-92.77 43.638-104.948 91.849-5.426 21.484 1.271 57.395 15.761 75.177 10.531 12.925 25.982 23.735 29.583 39.418 10.609 46.213-71.089 66.808-107.159 75.568-44.864 10.9-90.626 23.438-136.915 27.2-31.477 2.553-63.813-1.785-94.743-6.945zm-2.451-392.519a87.419 87.419 0 005.248-10.12c6.866-15.687-5.924-27.755-20.9-30.822-16.751-3.428-39.939-2.892-50.939 11.977-6.4 8.646-8.617 19.8-8.421 30.552.173 9.517 2.1 18.874 4.263 28.107 5.107 21.755 33.487 5.8 44.259-1.62a91.989 91.989 0 0026.49-28.074z" data-name="BG" />
+                  </g>
+                </g>
+              </g>
+              <path fill="url(#p8uq)" d="M348.43 307.962c-2.392-14.294-10-24.97-15.895-39.287-4.917-11.941-3.773-44.176-13.052-39.008-11.954 6.658-7.943 25.614-7 43.464-18.624-6.577-49.155-58.858-59.218-47.797-7.407 8.139 24.987 32.718 34.802 49.122-17.4-8.668-55.672-38.306-62.837-32.266-6.285 5.299 1.449 10.113 7.25 17.337-23.203 8.186 23.41 36.756 37.22 44.307-8.003 1.166-26.815-15.062-32.867-9.151-7.135 6.97 55.957 33.09 74.437 35.637 19.132 2.637 31.212 19.312 35.596 17.478-2.82-2.312 5.343-40.63 1.565-39.836z" transform="translate(2 2) scale(.01333)" />
+              <path fill="url(#d0ka)" d="M345.956 295.208c-7.861-9.38-11.559-21.855-15.322-33.35-1.963-6.002-2.176-35.04-10.844-32.413-4.735 1.981-9.549 9.664-8.956 22.312.301 6.455.709 11.979 1.65 22.077-12.591 12.979-4.952 34.993 5.186 43.685 8.721 7.046 18.954 8.558 20.039 8.455 14.943-.522 4.845-.003 19.214-2.475 1.423-6.086 4.923-11.21 6.406-17.103" transform="translate(2 2) scale(.01333)" />
+              <path fill="url(#q0gm)" d="M596.168 403.256c-65.738-25.676-100.616-42.132-164.635-71.861-23.53-10.926-61.474-33.216-85.774-38.805-11.44 23.183-13.008 43.491-22.093 61.532 50.37 32.556 101.281 66.003 154.57 94.36 56.406 30.016 98.336 62.098 145.447 99.81 10.596-26.927 29.669-100.716 16.388-124.727" transform="translate(2 2) scale(.01333)" />
+              <path fill="url(#h7wd)" d="M685.404 1339.657c5.14 20.724 16.473 62.504 9.063 64.429-17.248.621-164.423.621-196.54.487-3.027-4.833-2.33-9.042-.64-13.775 4.59-12.857 20.22-23.437 33.237-28.054 13.017-4.618 27.559-5.393 40.281-10.577 14.529-5.92 23.366-12.188 39.384-14.587 6.479-.972 16.043-.66 22.795-.347 17.473.806 34.947 1.615 52.42 2.424z" transform="translate(2 2) scale(.01333)" />
+              <path fill="url(#mo9y)" d="M517.783 818.018c-1.65 33.419 2.399 65.713 6.946 98.335 9.427 67.59 22.437 135.434 33.027 203.943 10.017 64.797 18.615 129.528 28.932 193.641 2.167 13.463 2.105 32.325 2.105 32.325s85.773 2.128 100.98 1.653c2.44-48.413 23.61-51.93 8.313-97.947-9.295-27.957-20.873-44.81-14.112-74.986 6.786-30.291 6.57-32.706-4.704-64.05-9.254-25.723-18.834-112.685-20.383-140.599-1.71-30.788-8.734-67.971-4.704-96.856 7.084-50.788 42.523-84.103 44.975-133.866-49.679-2.046-106.126 1.078-150.73-1.112-2.014 2.718-29.635 59.008-30.645 79.52z" transform="translate(2 2) scale(.01333)" />
+              <path fill="url(#jt3e)" d="M572.649 397.007c21.167 3.125 93.849 17.619 116.553 22.393 26.382 5.546 44.097 21.074 68.466 33.5 13.127 6.692 19.625 5.333 31.36 13.625 12.349 8.727 59.89 43.195 70.498 53.434 16.003 15.444-10.427 36.393-15.197 47.329-15.673 35.95-62.975 117.727-69.413 156.22-1.455 8.695 1.138 89.864 2.772 120.277a6.219 6.219 0 01-5.896 6.555c-44.912 2.387-187.662-.221-264.665-.409-4.14-.009-7.112-3.924-6.012-7.898 11.792-42.602 33.969-117.703 35.468-141.958 7.059-114.04 19.602-246.828 36.066-303.068z" transform="translate(2 2) scale(.01333)" />
+              <path fill="#f2a19c" d="M12.458 7.58c-.09.187-.172.678-.24.791-.24-.161-.62-.257-.858-.435.13-.249.22-.617.261-.893.156.122.612.407.837.537z" />
+              <path fill="url(#u3hu)" d="M729.298 387.144c1.103-15.779 2.145-40.705 12.346-53.403 9.502-11.826 29.465-22.043 43.166-14.119 22.387-2.665 42.347 20.062 44.254 40.258.053.572.081 1.156.125 1.734 1.929 2.165 3.71 4.502 5.742 7.705 6.545 10.314 19.697 20.209 1.436 28.21-2.991 1.312-5.729 2.303-8.247 3.018-.032 8.68.373 20.465-2.622 26.277-8.213 15.947-46.32 7.986-61.514 6.227-27.834-3.219-36.505-19.928-34.686-45.907z" transform="translate(2 2) scale(.01333)" />
+              <path fill="#23286b" d="M12.717 7.232a.279.279 0 10-.246-.41.276.276 0 00-.021.211.281.281 0 00.267.199zm0-.515a.237.237 0 110 .474.239.239 0 01-.227-.17.234.234 0 01.018-.18.236.236 0 01.21-.124zm.585.341a.187.187 0 00.054-.007.206.206 0 00.13-.126.312.312 0 00.007-.206c-.037-.123-.137-.21-.243-.21a.187.187 0 00-.054.008.206.206 0 00-.131.126.313.313 0 00-.006.206c.037.123.137.21.243.21zm-.052-.507c.086 0 .171.076.203.18a.271.271 0 01-.005.178.165.165 0 01-.104.102.145.145 0 01-.042.006c-.086 0-.171-.076-.203-.18a.271.271 0 01.005-.178.165.165 0 01.104-.102.145.145 0 01.042-.006z" />
+              <path fill="#1d72d8" d="M11.3 9.543c-.045.347-.1.765-.187 1.09-.01-.287-.14-1.358-.202-1.565.089-.03.258-.103.258-.103l-.24-.115.116-1.291s.322-.072.486-.13c-.016.02-.142 1.432-.23 2.114z" />
+              <path fill="#e94a47" d="M13.095 5.65c.01-.02.04-.024.053-.004.138.197.117.64-.03.802a.635.635 0 01-.353.205c-.09.018-.371-.007-.433.062-.062.071.038.33-.06.367-.097.036-.158-.268-.248-.292-.317-.085-.187.395-.184.55.003.208-.042.322-.194.335-.197.017-.195-.07-.22-.246a16.56 16.56 0 01-.104-.86c-.037-.381.085-.5.454-.55.27-.036.554-.056.828-.068.262-.011.376-.069.434-.178a.934.934 0 01.057-.123z" />
+              <path fill="#1d72d8" d="M10.152 12.567h-.74a.33.33 0 01-.33-.33v-.302h1.4v.303a.33.33 0 01-.33.329z" />
+              <path fill="#e94a47" d="M11.366 6.503a.02.02 0 00.02-.025.388.388 0 01.067-.317.555.555 0 01.385-.21c.129-.013.28-.023.425-.032l.224-.015c.165-.013.547-.041.537-.288a.02.02 0 00-.021-.02.02.02 0 00-.02.021c.008.207-.346.234-.497.245l-.226.015c-.146.01-.297.02-.427.033a.598.598 0 00-.413.226.428.428 0 00-.075.35.02.02 0 00.02.017z" />
+              <g transform="translate(15.841 4.225) scale(.01483)">
+                <path fill="url(#mze2)" d="M-178.58 311.544c8.926-.318 17.422 3.746 22.72 10.911 9.826 13.288 25.757 35.406 33.453 49.211 15.53 27.86 49.766 58.325 51.201 91.293.922 21.183-10.37 29.544-30.062 26.207-17.83-3.019-23.648-16.402-35.657-26.679-23.703-20.287-42.336-51.963-69.531-76.303-17.368-15.543-5.311-37.117 5.08-71.343.623-2.07 12.606-2.935 22.797-3.297z" />
+                <path fill="#1d72d8" d="M-323.612 1054.281c-1.206 18.63-4.29 56.187.857 57.917 11.561.56 109.646.56 131.037.439 1.5-4.345.586-8.129-1.05-12.384-4.436-11.557-15.983-21.067-25.153-25.219-9.17-4.15-14.763-4.848-23.795-9.507-10.318-5.322-16.875-10.957-27.81-13.114-4.423-.873-14.944-.592-19.409-.311-11.558.724-23.119 1.452-34.677 2.179z" />
+                <path fill="#151a4f" d="M-241.632 508.507c9.495 176.833 1.32 368.005-13.59 551.288-11.806-.29-94.7-.018-94.7-.018s-10.3-29.092-6.799-66.829c2.554-27.53 12.62-36.046 5.102-60.965-7.856-26.033-7.571-29.08-4.242-58.105 2.757-24.012.97-31.842 1.559-55.174.741-29.308-5.528-80.252-12.035-106.063-14.29-56.705-9.525-121.958.234-177.963 1.184-6.797.637-16.214.888-23.436 22.693-1.084 122.918-1.78 123.583-2.735z" />
+                <path fill="#fff" d="M-301.42 237.788c20.085 34.406 51.799 32.3 68.008 35.46-16.423 53.673-57.626 102.252-85.737 149.769 6.723-28.778 2.278-67.094 3.628-97.144.719-15.984.623-31.76 2.79-47.35 1.602-11.514 13.256-30.41 11.31-40.735z" />
+                <path fill="#eee" d="M-271.55 264.125l-25.171-28.662-24.47 18.152 23.57 28.426zm45.4 3.137l-45.4-3.137 10.337 28.216 28.326.306z" />
+                <path fill="#1d72d8" d="M-277.78 335.288c-7.144 13.588-35.466 77.747-40.518 83.794 13.035-9.406 26.941-25.919 38.832-35.544 7.786-6.302 30.434-27.786 30.434-27.786l-8.93-15.335s11.69.986 17.819.696c5.113-16.869 25.407-65.644 25.407-65.644s-16.914-20.832-21.142-25.98c-.144 1.932-34.51 71.739-41.902 85.8zm19.826 227.14h-42.77c-11.674 0-21.137-9.429-21.137-21.06V519.82h85.044v21.548c0 11.631-9.463 21.06-21.137 21.06z" />
+                <path fill="#f2a19c" d="M-213.673 529.586c2.182 19.295 3.63 24.969 11.231 43.065 3.318 7.904 23.353 36.628 2.461 33.204-18.239-2.988-38.857-90.428-12.97-88.596 1.77 2.129-1.049 9.423-.722 12.327z" />
+                <path fill="#ffbeb6" d="M-220.478 484.827c-13.627 2.196-25.687 12.285-39.596 15.518-8.206 1.907-38.395-2.146-34.006 9.46 5.824 15.397 31.235 1.59 41.524 5.58 13.456 5.219 12.272 21.843 16.92 35.57 3.544 10.456 11.78 37.537 19.922 45.092 17.89 16.602 9.588-9.364 5.97-22.208-8.702-30.912-10.872-55.224 24.275-67.267-10.137-8.654-10.644-14.917-20.376-24.118 2.11 2.733-2.934 1.28-14.633 2.373z" />
+                <path fill="url(#zy3c)" d="M-105.97 434.864c-20.604-12.328-42.998 6.932-60.138 17.318-18.825 11.409-39.644 21.247-57.6 33.148 7.847 17.428 16.003 35.17 24.153 51.862 27.914-15.257 61.068-21.147 89.828-34.457 16.054-7.432 37.157-14.209 35.804-33.945-1.404-20.478-17.241-25.068-32.047-33.926z" />
+                <path fill="url(#aa5d)" transform="matrix(-3.1508 0 0 3.15025 -91.451 308.958)" d="M52.054 249.873H33.62L14.772 68.675h56.131z" />
+                <path fill="#cae2ff" d="M-361.396 1114.73H-91.45c0-23.985-19.45-43.431-43.44-43.431h-183.065c-23.99 0-43.44 19.446-43.44 43.432z" />
+                <path fill="#23286b" d="M-233.3 359.762h11.141c6.317 0 11.488-5.17 11.488-11.486v-26.733c0-6.316-5.17-11.486-11.488-11.486H-233.3c-6.317 0-11.488 5.17-11.488 11.486v26.733c0 6.316 5.167 11.486 11.488 11.486z" />
+                <path fill="#23286b" d="M-222.518 336.371h-9.453v140.34h9.453z" />
+                <path fill="#cae2ff" d="M-111.465 448.961h-229.916v116.424h229.916z" />
+                <ellipse fill="#d4ecff" cx="229.22" cy="507.326" rx="79.775" ry="30.74" transform="scale(-1 1)" />
+              </g>
+              <defs id="j8yi">
+                <linearGradient id="h8a7" gradientUnits="userSpaceOnUse" x1="14.771" y1="159.274" x2="70.903" y2="159.274">
+                  <stop offset="0" id="t6il" stop-color="#eee" />
+                  <stop offset="1" id="k3tf" stop-color="#d6d7d8" />
+                </linearGradient>
+                <linearGradient id="p8uq" gradientUnits="userSpaceOnUse" x1="211.114" y1="14.182" x2="218.114" y2="30.848" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="n9kt" stop-color="#ffbeb6" />
+                  <stop offset="1" id="r1qz" stop-color="#f2a19c" />
+                </linearGradient>
+                <linearGradient id="d0ka" gradientUnits="userSpaceOnUse" x1="206.849" y1="17.453" x2="193.349" y2="16.953" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="kcln" stop-color="#ffbeb6" />
+                  <stop offset="1" id="we9u" stop-color="#f2a19c" />
+                </linearGradient>
+                <linearGradient id="q0gm" gradientUnits="userSpaceOnUse" x1="193.749" y1="14.502" x2="126.415" y2="76.502" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="kuy4" stop-color="#428dfc" />
+                  <stop offset="1" id="r7qq" stop-color="#1d72d8" />
+                </linearGradient>
+                <linearGradient id="h7wd" gradientUnits="userSpaceOnUse" x1="84.666" y1="367.103" x2="149.105" y2="367.103" gradientTransform="matrix(-3.13592 0 .50175 3.1244 774.753 223.803)">
+                  <stop offset="0" id="vs4q" stop-color="#428dfc" />
+                  <stop offset="1" id="nqr1" stop-color="#1d72d8" />
+                </linearGradient>
+                <linearGradient id="mo9y" gradientUnits="userSpaceOnUse" x1="126.999" y1="309.854" x2="91.327" y2="215.901" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="xcy6" stop-color="#23286b" />
+                  <stop offset="1" id="r5to" stop-color="#151a4f" />
+                </linearGradient>
+                <linearGradient id="jt3e" gradientUnits="userSpaceOnUse" x1="30.08" y1="128.143" x2="146.067" y2="128.143" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="zf4d" stop-color="#428dfc" />
+                  <stop offset="1" id="r4qr" stop-color="#1d72d8" />
+                </linearGradient>
+                <linearGradient id="u3hu" gradientUnits="userSpaceOnUse" x1="51.563" y1="63.864" x2="58.758" y2="43.077" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
+                  <stop offset="0" id="a4gw" stop-color="#ffbeb6" />
+                  <stop offset="1" id="b6xm" stop-color="#f2a19c" />
+                </linearGradient>
+                <linearGradient id="mze2" gradientUnits="userSpaceOnUse" x1="23.047" y1="122.401" x2="39.714" y2="147.068" gradientTransform="matrix(-2.81901 0 0 2.80866 -71.155 51.192)">
+                  <stop offset="0" id="xvw9" stop-color="#428dfc" />
+                  <stop offset="1" id="hu7f" stop-color="#1d72d8" />
+                </linearGradient>
+                <linearGradient id="zy3c" gradientUnits="userSpaceOnUse" x1=".96" y1="154.11" x2="54.116" y2="154.11" gradientTransform="matrix(-2.81901 0 0 2.80866 -71.155 51.192)">
+                  <stop offset="0" id="qh6o" stop-color="#428dfc" />
+                  <stop offset="1" id="qh7m" stop-color="#1d72d8" />
+                </linearGradient>
+                <linearGradient id="aa5d" gradientUnits="userSpaceOnUse" x1="14.771" y1="159.274" x2="70.903" y2="159.274">
+                  <stop offset="0" id="tv6y" stop-color="#cae2ff" />
+                  <stop offset="1" id="puj6" stop-color="#b2cbe9" />
+                </linearGradient>
+                <defs id="aq0a">
+                  <clipPath id="dwh7">
+                    <path id="s1rb" d="M0 0h85.675v255.781H0z" />
+                  </clipPath>
+                </defs>
+              </defs>
+            </svg>
+          </c-flex>
+        </c-flex>
+      </container>
+    </template>
+    <template name="footer">
+      <banner />
+    </template>
+  </base-layout>
 </template>
 
-<script lang="js">
-import {
-  CBox,
-  CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
-  CFlex,
-  CHeading
-} from '@chakra-ui/vue'
+<script>
+import Banner from '@/components/Banner.vue'
+import BaseLayout from '@/components/BaseLayout.vue'
+import { CFlex, CImage, CStack, CText } from '@chakra-ui/vue'
+import Container from '@/components/Container.vue'
+import { homeQuery } from '@/graphql/queries'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
-  name: 'App',
+  name: 'index',
   components: {
-    CBox,
-    CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
+    Banner,
+    BaseLayout,
     CFlex,
-    CHeading
+    CImage,
+    Container,
+    CStack,
+    CText,
+    Navbar
   },
-  inject: ['$chakraColorMode', '$toggleColorMode'],
-  data () {
+  data() {
     return {
-      showModal: false,
-      mainStyles: {
-        dark: {
-          bg: 'gray.700',
-          color: 'whiteAlpha.900'
-        },
-        light: {
-          bg: 'white',
-          color: 'gray.900'
-        }
-      }
+      home: {}
     }
   },
-  computed: {
-    colorMode () {
-      return this.$chakraColorMode()
-    },
-    theme () {
-      return this.$chakraTheme()
-    },
-    toggleColorMode () {
-      return this.$toggleColorMode
-    }
-  },
-  methods: {
-    showToast () {
-      this.$toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 10000,
-        isClosable: true
-      })
+  apollo: {
+    home: {
+      prefetch: true,
+      query: homeQuery
     }
   }
 }

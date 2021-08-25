@@ -1,3 +1,11 @@
+.h-144 {
+  height: 36rem;
+}
+
+.w-144 {
+  width: 36rem;
+}
+
 .anim {
   animation-duration: 1s;
   animation-fill-mode: both;
