@@ -64,11 +64,18 @@
                 'inline' // md
               ]"
             >
-              {{ banner === null ? '' : banner.longDescription }} {{ `${days}d ${hours}h:${minutes}m.${seconds}s` }}
+              {{ banner === null ? '' : banner.longDescription }}
+              <c-text
+                v-if="banner !== null && banner.timer !== null"
+                as="samp"
+              >
+                {{ `${days}d ${hours}h:${minutes}m.${seconds}s` }}
+              </c-text>
             </c-text>
           </c-text>
         </c-flex>
         <c-box
+          v-if="banner !== null && banner.externalLink !== null"
           :order="[
             '3', // base
             '2'  // sm
@@ -84,7 +91,7 @@
           ]"
         >
           <c-link
-            :href="banner === null || banner.meetLink === null ? '#' : banner.meetLink.url"
+            :href="banner === null || banner.externalLink === null ? '#' : banner.externalLink.url"
             is-external
             display="flex"
             alignItems="center"
@@ -106,7 +113,7 @@
               boxShadow: 'none'
             }"
           >
-            {{ banner === null || banner.meetLink === null ? '' : banner.meetLink.text }}
+            {{ banner === null || banner.externalLink === null ? '' : banner.externalLink.text }}
           </c-link>
         </c-box>
         <c-flex

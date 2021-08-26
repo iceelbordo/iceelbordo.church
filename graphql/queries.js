@@ -100,7 +100,7 @@ export const bannerQuery = gql`
         datetime,
         timeZone
       },
-      meetLink {
+      externalLink {
         text,
         url
       }
