@@ -5,8 +5,12 @@
     </template>
     <template>
       <container
-        pt="20"
-        pb="4"
+        :pt="[
+          '20', // base
+          '20', // sm
+          '20', // md
+          '0'   // lg
+        ]"
       >
         <c-flex
           :flexDirection="[

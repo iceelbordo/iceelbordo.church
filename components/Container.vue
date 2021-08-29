@@ -27,11 +27,11 @@ export default {
   },
   props: {
     pt: {
-      type: String,
+      type: String | Array,
       default: '0'
     },
     pb: {
-      type: String,
+      type: String | Array,
       default: '0'
     },
     height: {
