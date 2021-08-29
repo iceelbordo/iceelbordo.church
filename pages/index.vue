@@ -22,7 +22,14 @@
           minHeight="100vh"
           alignItems="center"
         >
-          <c-flex>
+          <c-flex
+            :textAlign="[
+              'center', // base
+              'center', // sm
+              'center', // md
+              'left'    // lg
+            ]"
+          >
             <c-stack
               color="gray.900"
             >
