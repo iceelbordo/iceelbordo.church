@@ -41,7 +41,6 @@
         ]"
       >
         <c-button
-          :leftIcon="!howlState.loaded ? 'dots-animation' : howlState.playing ? 'wave-animation' : 'play'"
           variantColor="blue"
           size="sm"
           variant="outline"
@@ -54,6 +53,14 @@
           position="static"
           @click="onTogglePlay"
         >
+          <c-icon
+            :name="!howlState.loaded ? 'circular-progress-animation' : howlState.playing ? 'wave-animation' : 'play'"
+            :class="!howlState.loaded ? 'animate-spin' : ''"
+            size="1rem"
+            color="blue"
+            mr="0.25rem"
+            mb="1px"
+          />
           {{ timeOf(item.audio.metadata.duration) }}
         </c-button>
       </c-box>
@@ -99,7 +106,7 @@
 </template>
 
 <script>
-import { CBox, CButton, CFlex, CHeading, CProgress, CStack, CText } from '@chakra-ui/vue'
+import { CBox, CButton, CFlex, CHeading, CProgress, CStack, CText, CIcon } from '@chakra-ui/vue'
 import { useDate, useHowler } from '@/use/hooks'
 
 export default {
@@ -111,7 +118,8 @@ export default {
     CHeading,
     CProgress,
     CStack,
-    CText
+    CText,
+    CIcon
   },
   props: {
     item: {
@@ -125,13 +133,6 @@ export default {
     showControls: {
       type: Boolean,
       required: true
-    }
-  },
-  watch: {
-    showControls: function (newShowControls, oldShowControls) {
-      if (!newShowControls) {
-        this.pause()
-      }
     }
   },
   data() {
@@ -148,25 +149,32 @@ export default {
       howlState, play, pause, seek, playedHours, playedMinutes, playedSeconds
     }
   },
+  watch: {
+    showControls(newShowControls, oldShowControls) {
+      if (!newShowControls) {
+        this.pause()
+      }
+    }
+  },
   methods: {
-    onTogglePlay: function(event) {
+    onTogglePlay(event) {
       if (!this.howlState.loaded) {
         return
       }
 
       this.howlState.playing ? this.pause() : this.play()
     },
-    onPlay: function() {
+    onPlay() {
       this.$emit('update:index', this.index)
     },
-    onProgress: function() {
+    onProgress() {
       if (!this.howlState.playing) {
         return 1
       }
       this.progressValue = (this.seek() * 100) / this.item.audio.metadata.duration
       return 0
     },
-    onSeek: function(event) {
+    onSeek(event) {
       const x = event.pageX - event.target.offsetLeft
       this.progressValue = (x * 100) / event.target.offsetWidth
       const percentage = (this.progressValue * this.item.audio.metadata.duration) / 100
