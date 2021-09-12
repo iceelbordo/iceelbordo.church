@@ -1,4 +1,7 @@
 export const customIcons = {
+  'arrow-down': {
+    path: `<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />`
+  },
   'at-symbol': {
     path: `<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />`
   },
@@ -8,11 +11,10 @@ export const customIcons = {
       <path fill="currentColor" d="M6 14l-3.394 1.455a1 1 0 00-.606.92V19.5a.5.5 0 00.5.5H6zm12 0v6h3.5a.5.5 0 00.5-.5v-3.126a1 1 0 00-.606-.92z" opacity=".6"/>
     `
   },
-  'circular-animation': {
+  'circular-progress-animation': {
     path: `
-      <g class="anim anim--rotate anim--infinite" transform="translate(12,11.999997) rotate(0)">
-        <path fill="currentColor" transform="translate(-12,-11.999997)" d="M11.980000,2C6.464965,2.011030,1.999989,6.484954,2,12C2,17.522847,6.477153,22,12,22C17.522847,22,22,17.522847,22,12L20,12C20,16.418278,16.418278,20,12,20C7.581722,20,4,16.418278,4,12C4,7.581722,7.581722,4,12,4L12,2C11.993333,1.999993,11.986667,1.999993,11.980000,2Z"/>
-      </g>
+      <path fill="currentColor" opacity=".25" d="M 12 0 A 12 12 0 0 0 0 12 A 12 12 0 0 0 12 24 A 12 12 0 0 0 24 12 A 12 12 0 0 0 12 0 z M 12 4 A 8 8 0 0 1 20 12 A 8 8 0 0 1 12 20 A 8 8 0 0 1 4 12 A 8 8 0 0 1 12 4 z " />
+      <path fill="currentColor" opacity=".75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
     `
   },
   clock: {
@@ -20,20 +22,6 @@ export const customIcons = {
   },
   close: {
     path: `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`
-  },
-  'dots-animation': {
-    path: `
-      <g class="anim anim--to-left anim--infinite" transform="translate(5.375,12)">
-        <g class="anim anim--incrase anim--infinite" transform="scale(.75)">
-          <circle fill="currentColor" transform="translate(0)" r="4.5"/>
-        </g>
-      </g>
-      <g class="anim anim--to-right anim--infinite" transform="translate(16.375,12)">
-        <g class="anim anim--decrease anim--infinite" transform="scale(1.25,1.25)">
-          <circle fill="currentColor" transform="translate(0,0)" r="4.5"/>
-        </g>
-      </g>
-    `
   },
   duplicate: {
     path: `<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />`
@@ -59,9 +47,9 @@ export const customIcons = {
   'wave-animation': {
     path: `
       <g>
-        <line class="anim anim--left-line anim--infinite" stroke="currentColor" stroke-width="4" x1="-6" x2="-6" y1="8" y2="-8"/>
-        <line class="anim anim--middle-line anim--infinite" stroke="currentColor" stroke-width="4" x1="0" x2="0" y1="8" y2="-8"/>
-        <line class="anim anim--right-line anim--infinite" stroke="currentColor" stroke-width="4" x1="6" x2="6" y1="8" y2="-8"/>
+        <line class="animate-leftWave" stroke="currentColor" stroke-width="4" x1="-6" x2="-6" y1="8" y2="-8"/>
+        <line class="animate-middleWave" stroke="currentColor" stroke-width="4" x1="0" x2="0" y1="8" y2="-8"/>
+        <line class="animate-rightWave" stroke="currentColor" stroke-width="4" x1="6" x2="6" y1="8" y2="-8"/>
       </g>
     `,
     viewBox: "-12 -12 24 24"
