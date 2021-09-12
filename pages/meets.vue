@@ -20,13 +20,12 @@
         <list-of-meets>
           <item
             v-for="(item, index) in meets"
-            :item="item"
             :key="index"
+            :item="item"
           />
           <template name="scroll">
-            <infinite-scroll
-              :show="state.isLoading"
-              :size="meetsCount"
+            <scroll-button
+              :count="meetsCount"
               :pageSize="limit"
               @update:startFrom="onStartFromUpdate"
             />
@@ -42,31 +41,30 @@
 </template>
 
 <script>
+import { CHeading } from '@chakra-ui/vue'
 import Banner from '@/components/Banner.vue'
 import BaseLayout from '@/components/BaseLayout.vue'
-import { CHeading } from '@chakra-ui/vue'
 import Container from '@/components/Container.vue'
-import InfiniteScroll from '@/components/InfiniteScroll.vue'
+import eventBus from '@/use/eventBus'
 import Item from '@/components/meets/Item.vue'
 import ListOfMeets from '@/components/meets/ListOfMeets.vue'
+import { meetsCountQuery, meetsQuery } from '@/graphql/queries'
 import Navbar from '@/components/Navbar.vue'
 import PlyrModal from '@/components/meets/PlyrModal.vue'
-import { meetsQuery, meetsCountQuery } from '@/graphql/queries'
-import { useState } from '@/use/hooks'
-import eventBus from '@/use/eventBus'
+import ScrollButton from '@/components/ScrollButton.vue'
 
 export default {
-  name: 'meets',
+  name: 'Meets',
   components: {
     Banner,
     BaseLayout,
     CHeading,
     Container,
-    InfiniteScroll,
     Item,
     ListOfMeets,
     Navbar,
-    PlyrModal
+    PlyrModal,
+    ScrollButton
   },
   props: {
     limit: {
@@ -76,6 +74,13 @@ export default {
     start: {
       type: Number,
       default: 0
+    }
+  },
+  data() {
+    return {
+      meets: [],
+      meetsCount: 0,
+      containerPaddingBottom: '20'
     }
   },
   head() {
@@ -94,31 +99,20 @@ export default {
       ],
     }
   },
-  data() {
-    const { state, toggleIsLoading } = useState()
-
-    return {
-      meets: [],
-      meetsCount: 0,
-      state, toggleIsLoading,
-      containerPaddingBottom: '20'
-    }
-  },
   mounted() {
-    eventBus.$on('hidden:banner', () => this.containerPaddingBottom = '4')
+    eventBus.$on('hidden:banner', () => { this.containerPaddingBottom = '4' })
   },
   methods: {
-    findAll: function (limit, start) {
+    findAll(limit, start) {
       return this.$apollo.query({
         query: meetsQuery,
         variables: {
-          limit: limit,
-          start: start
+          limit,
+          start
         }
       })
     },
-    onStartFromUpdate: async function(startFrom) {
-      this.toggleIsLoading()
+    async onStartFromUpdate(startFrom) {
       const request = await this.findAll(this.limit, startFrom)
       if (request?.data.meets) {
         this.meets = [
@@ -126,14 +120,13 @@ export default {
           ...request.data.meets
         ]
       }
-      this.toggleIsLoading()
     }
   },
   apollo: {
     meets: {
       prefetch: true,
       query: meetsQuery,
-      variables () {
+      variables() {
         return {
           limit: this.limit,
           start: this.start

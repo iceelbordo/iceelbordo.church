@@ -22,16 +22,15 @@
           <list-of-sermons>
             <item
               v-for="(item, index) in sermons"
+              :key="item.id"
               :item="item"
               :index="index"
-              :key="item.id"
               :showControls="sermonIndex === index"
               @update:index="sermonIndex = $event"
             />
             <template name="scroll">
-              <infinite-scroll
-                :show="state.isLoading"
-                :size="sermonsCount"
+              <scroll-button
+                :count="sermonsCount"
                 :pageSize="limit"
                 @update:startFrom="onStartFromUpdate"
               />
@@ -47,31 +46,29 @@
 </template>
 
 <script>
+import { CHeading, CStack } from '@chakra-ui/vue'
 import Banner from '@/components/Banner.vue'
 import BaseLayout from '@/components/BaseLayout.vue'
-import { CFlex, CHeading, CStack } from '@chakra-ui/vue'
 import Container from '@/components/Container.vue'
 import eventBus from '@/use/eventBus'
-import InfiniteScroll from '@/components/InfiniteScroll.vue'
 import Item from '@/components/sermons/Item.vue'
 import ListOfSermons from '@/components/sermons/ListOfSermons.vue'
 import Navbar from '@/components/Navbar.vue'
-import { sermonsQuery, sermonsCountQuery } from '@/graphql/queries'
-import { useState } from '@/use/hooks'
+import ScrollButton from '@/components/ScrollButton.vue'
+import { sermonsCountQuery, sermonsQuery } from '@/graphql/queries'
 
 export default {
-  name: 'sermons',
+  name: 'Sermons',
   components: {
     Banner,
     BaseLayout,
-    CFlex,
     CHeading,
     Container,
     CStack,
-    InfiniteScroll,
     Item,
     ListOfSermons,
-    Navbar
+    Navbar,
+    ScrollButton
   },
   props: {
     limit: {
@@ -84,31 +81,27 @@ export default {
     }
   },
   data() {
-    const { state, toggleIsLoading } = useState()
-
     return {
       sermons: [],
       sermonsCount: 0,
       sermonIndex: undefined,
-      state, toggleIsLoading,
       containerPaddingBottom: '20'
     }
   },
   mounted() {
-    eventBus.$on('hidden:banner', () => this.containerPaddingBottom = '4')
+    eventBus.$on('hidden:banner', () => { this.containerPaddingBottom = '4' })
   },
   methods: {
-    findAll: function (limit, start) {
+    findAll(limit, start) {
       return this.$apollo.query({
         query: sermonsQuery,
         variables: {
-          limit: limit,
-          start: start
+          limit,
+          start
         }
       })
     },
-    onStartFromUpdate: async function (fromStart) {
-      this.toggleIsLoading()
+    async onStartFromUpdate(fromStart) {
       const request = await this.findAll(this.limit, fromStart)
       if (request?.data.sermons) {
         this.sermons = [
@@ -116,14 +109,13 @@ export default {
           ...request.data.sermons
         ]
       }
-      this.toggleIsLoading()
     }
   },
   apollo: {
     sermons: {
       prefetch: true,
       query: sermonsQuery,
-      variables () {
+      variables() {
         return {
           limit: this.limit,
           start: this.start
