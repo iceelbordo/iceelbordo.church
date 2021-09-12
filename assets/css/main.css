@@ -1,102 +1,22 @@
 .h-144 {
-  height: 36rem;
+  height: 36rem
 }
 
 .w-144 {
-  width: 36rem;
+  width: 36rem
 }
 
-.anim {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+@keyframes spin {
+  to {
+      transform: rotate(1turn)
+  }
 }
 
-.anim--to-left {
-  animation-name: to-left;
-  animation-duration: 1.2s;
-  animation-timing-function: linear;
+.animate-spin {
+  animation: spin 1s linear infinite
 }
 
-@keyframes to-left {
-	50% {
-		transform: translate(7.625px, 12px)
-	}
-}
-
-.anim--incrase {
-  animation-name: incrase;
-  animation-duration: 1.2s;
-  animation-timing-function: linear;
-}
-
-@keyframes incrase {
-	50% {
-		transform: scale(1.25)
-	}
-}
-
-.anim--to-right {
-  animation-name: to-right;
-  animation-duration: 1.2s;
-  animation-timing-function: linear;
-}
-
-@keyframes to-right {
-	50% {
-		transform: translate(18.625000px, 12px)
-	}
-}
-
-.anim--decrease {
-  animation-name: decrease;
-  animation-duration: 1.2s;
-  animation-timing-function: linear;
-}
-
-@keyframes decrease {
-	50% {
-		transform: scale(.75)
-	}
-}
-
-.anim--rotate {
-	animation-name: rotate;
-	animation-duration: 1.2s;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-}
-
-@keyframes rotate {
-	0% {
-		transform: translate(12px, 11.999997px) rotate(0deg)
-	}
-	100% {
-		transform: translate(12px, 11.999997px) rotate(360deg)
-	}
-}
-
-.anim--left-line {
-  animation-name: left-line;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  stroke-dasharray: 16
-}
-
-.anim--middle-line {
-  animation-name: middle-line;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  stroke-dasharray: 16
-}
-
-.anim--right-line {
-  animation-name: right-line;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  stroke-dasharray: 16
-}
-
-@keyframes left-line {
+@keyframes leftWave {
   0% {
     stroke-dashoffset: 14
   }
@@ -198,7 +118,12 @@
   }
 }
 
-@keyframes middle-line {
+.animate-leftWave {
+  animation: leftWave 1.5s linear infinite;
+  stroke-dasharray: 16
+}
+
+@keyframes middleWave {
   0% {
     stroke-dashoffset: 2
   }
@@ -300,7 +225,12 @@
   }
 }
 
-@keyframes right-line {
+.animate-middleWave {
+  animation: middleWave 1.5s linear infinite;
+  stroke-dasharray: 16
+}
+
+@keyframes rightWave {
   0% {
     stroke-dashoffset: 12
   }
@@ -402,6 +332,7 @@
   }
 }
 
-.anim--infinite {
-  animation-iteration-count: infinite;
+.animate-rightWave {
+  animation: rightWave 1.5s linear infinite;
+  stroke-dasharray: 16
 }
