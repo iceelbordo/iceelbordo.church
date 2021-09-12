@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { CBox, CButton, CFlex, CHeading, CIconButton, CStack, CText } from '@chakra-ui/vue'
+import { CBox, CButton, CHeading, CStack, CText } from '@chakra-ui/vue'
 import eventBus from '@/use/eventBus'
 import { useDate } from '@/use/hooks'
 
@@ -59,9 +59,7 @@ export default {
   components: {
     CBox,
     CButton,
-    CFlex,
     CHeading,
-    CIconButton,
     CStack,
     CText
   },
@@ -79,8 +77,8 @@ export default {
     }
   },
   methods: {
-    onPlayClick: function(event) {
-      let regexp = /svg|path/i
+    onPlayClick(event) {
+      const regexp = /svg|path/i
       if (event.target.hasAttribute('data-chakra-component') || regexp.test(event.target.tagName)) {
 
         const event = new CustomEvent('click', {

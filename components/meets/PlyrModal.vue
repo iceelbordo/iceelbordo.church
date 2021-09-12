@@ -57,12 +57,12 @@ export default {
     eventBus.$on('play:video', this.onVideoPlay)
   },
   methods: {
-    onVideoPlay: function(event) {
+    onVideoPlay(event) {
       this.embedID = event.detail.embedID
       this.toggleIsVisible()
       this.play(this.embedID)
     },
-    onVideoStop: function(event) {
+    onVideoStop(event) {
       if (event.target.hasAttribute('data-chakra-component')) {
         this.toggleIsVisible()
         this.stop()

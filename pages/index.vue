@@ -94,48 +94,48 @@
               </g>
               <defs id="j8yi">
                 <linearGradient id="h8a7" gradientUnits="userSpaceOnUse" x1="14.771" y1="159.274" x2="70.903" y2="159.274">
-                  <stop offset="0" id="t6il" stop-color="#eee" />
-                  <stop offset="1" id="k3tf" stop-color="#d6d7d8" />
+                  <stop id="t6il" offset="0" stop-color="#eee" />
+                  <stop id="k3tf" offset="1" stop-color="#d6d7d8" />
                 </linearGradient>
                 <linearGradient id="p8uq" gradientUnits="userSpaceOnUse" x1="211.114" y1="14.182" x2="218.114" y2="30.848" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="n9kt" stop-color="#ffbeb6" />
-                  <stop offset="1" id="r1qz" stop-color="#f2a19c" />
+                  <stop id="n9kt" offset="0" stop-color="#ffbeb6" />
+                  <stop id="r1qz" offset="1" stop-color="#f2a19c" />
                 </linearGradient>
                 <linearGradient id="d0ka" gradientUnits="userSpaceOnUse" x1="206.849" y1="17.453" x2="193.349" y2="16.953" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="kcln" stop-color="#ffbeb6" />
-                  <stop offset="1" id="we9u" stop-color="#f2a19c" />
+                  <stop id="kcln" offset="0" stop-color="#ffbeb6" />
+                  <stop id="we9u" offset="1" stop-color="#f2a19c" />
                 </linearGradient>
                 <linearGradient id="q0gm" gradientUnits="userSpaceOnUse" x1="193.749" y1="14.502" x2="126.415" y2="76.502" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="kuy4" stop-color="#428dfc" />
-                  <stop offset="1" id="r7qq" stop-color="#1d72d8" />
+                  <stop id="kuy4" offset="0" stop-color="#428dfc" />
+                  <stop id="r7qq" offset="1" stop-color="#1d72d8" />
                 </linearGradient>
                 <linearGradient id="h7wd" gradientUnits="userSpaceOnUse" x1="84.666" y1="367.103" x2="149.105" y2="367.103" gradientTransform="matrix(-3.13592 0 .50175 3.1244 774.753 223.803)">
-                  <stop offset="0" id="vs4q" stop-color="#428dfc" />
-                  <stop offset="1" id="nqr1" stop-color="#1d72d8" />
+                  <stop id="vs4q" offset="0" stop-color="#428dfc" />
+                  <stop id="nqr1" offset="1" stop-color="#1d72d8" />
                 </linearGradient>
                 <linearGradient id="mo9y" gradientUnits="userSpaceOnUse" x1="126.999" y1="309.854" x2="91.327" y2="215.901" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="xcy6" stop-color="#23286b" />
-                  <stop offset="1" id="r5to" stop-color="#151a4f" />
+                  <stop id="xcy6" offset="0" stop-color="#23286b" />
+                  <stop id="r5to" offset="1" stop-color="#151a4f" />
                 </linearGradient>
                 <linearGradient id="jt3e" gradientUnits="userSpaceOnUse" x1="30.08" y1="128.143" x2="146.067" y2="128.143" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="zf4d" stop-color="#428dfc" />
-                  <stop offset="1" id="r4qr" stop-color="#1d72d8" />
+                  <stop id="zf4d" offset="0" stop-color="#428dfc" />
+                  <stop id="r4qr" offset="1" stop-color="#1d72d8" />
                 </linearGradient>
                 <linearGradient id="u3hu" gradientUnits="userSpaceOnUse" x1="51.563" y1="63.864" x2="58.758" y2="43.077" gradientTransform="matrix(-3.13592 0 0 3.1244 958.941 223.803)">
-                  <stop offset="0" id="a4gw" stop-color="#ffbeb6" />
-                  <stop offset="1" id="b6xm" stop-color="#f2a19c" />
+                  <stop id="a4gw" offset="0" stop-color="#ffbeb6" />
+                  <stop id="b6xm" offset="1" stop-color="#f2a19c" />
                 </linearGradient>
                 <linearGradient id="mze2" gradientUnits="userSpaceOnUse" x1="23.047" y1="122.401" x2="39.714" y2="147.068" gradientTransform="matrix(-2.81901 0 0 2.80866 -71.155 51.192)">
-                  <stop offset="0" id="xvw9" stop-color="#428dfc" />
-                  <stop offset="1" id="hu7f" stop-color="#1d72d8" />
+                  <stop id="xvw9" offset="0" stop-color="#428dfc" />
+                  <stop id="hu7f" offset="1" stop-color="#1d72d8" />
                 </linearGradient>
                 <linearGradient id="zy3c" gradientUnits="userSpaceOnUse" x1=".96" y1="154.11" x2="54.116" y2="154.11" gradientTransform="matrix(-2.81901 0 0 2.80866 -71.155 51.192)">
-                  <stop offset="0" id="qh6o" stop-color="#428dfc" />
-                  <stop offset="1" id="qh7m" stop-color="#1d72d8" />
+                  <stop id="qh6o" offset="0" stop-color="#428dfc" />
+                  <stop id="qh7m" offset="1" stop-color="#1d72d8" />
                 </linearGradient>
                 <linearGradient id="aa5d" gradientUnits="userSpaceOnUse" x1="14.771" y1="159.274" x2="70.903" y2="159.274">
-                  <stop offset="0" id="tv6y" stop-color="#cae2ff" />
-                  <stop offset="1" id="puj6" stop-color="#b2cbe9" />
+                  <stop id="tv6y" offset="0" stop-color="#cae2ff" />
+                  <stop id="puj6" offset="1" stop-color="#b2cbe9" />
                 </linearGradient>
                 <defs id="aq0a">
                   <clipPath id="dwh7">
@@ -155,20 +155,19 @@
 </template>
 
 <script>
+import { CFlex, CStack, CText } from '@chakra-ui/vue'
 import Banner from '@/components/Banner.vue'
 import BaseLayout from '@/components/BaseLayout.vue'
-import { CFlex, CImage, CStack, CText } from '@chakra-ui/vue'
 import Container from '@/components/Container.vue'
-import { homeQuery } from '@/graphql/queries'
+import {homeQuery} from '@/graphql/queries'
 import Navbar from '@/components/Navbar.vue'
 
 export default {
-  name: 'index',
+  name: 'Index',
   components: {
     Banner,
     BaseLayout,
     CFlex,
-    CImage,
     Container,
     CStack,
     CText,

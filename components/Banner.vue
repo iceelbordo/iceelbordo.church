@@ -1,12 +1,12 @@
 <template>
   <c-box
+    v-if="banner !== null"
     w="full"
     bg="indigo.600"
     position="fixed"
     bottom="0"
     opacity="1"
     transition="opacity 500ms"
-    v-if="banner !== null"
   >
     <c-box
       maxWidth="80rem"
@@ -159,8 +159,8 @@
 </template>
 
 <script>
-import { bannerQuery } from '@/graphql/queries'
 import { CBox, CButton, CFlex, CIcon, CLink, CText } from '@chakra-ui/vue'
+import { bannerQuery } from '@/graphql/queries'
 import eventBus from '@/use/eventBus'
 
 export default {
@@ -183,7 +183,7 @@ export default {
     this.countdown()
   },
   methods: {
-    onCloseClick: function () {
+    onCloseClick() {
       const style = this.$el.style
       style.opacity = 0
 
@@ -192,7 +192,7 @@ export default {
         eventBus.$emit('hidden:banner')
       }, 600)
     },
-    countdown: function () {
+    countdown() {
       if (this.banner === null || this.banner.timer === null) {
         return
       }

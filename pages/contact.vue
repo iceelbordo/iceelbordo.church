@@ -18,8 +18,8 @@
           :pb="containerPaddingY"
         >
           <input
-            v-chakra
             id="clipboard"
+            v-chakra
             position="absolute"
             left="-24rem"
           />
@@ -83,7 +83,7 @@
                     <c-icon
                       name="location-market"
                       size="8"
-                      color="blue.500"
+                      color="#1A72FF"
                     />
                   </c-flex>
                   <c-flex
@@ -127,7 +127,7 @@
                     <c-icon
                       name="at-symbol"
                       size="8"
-                      color="blue.500"
+                      color="#1A72FF"
                     />
                   </c-flex>
                   <c-flex
@@ -156,7 +156,7 @@
                     <c-icon
                       name="clock"
                       size="8"
-                      color="blue.500"
+                      color="#1A72FF"
                     />
                   </c-flex>
                   <c-flex
@@ -170,13 +170,13 @@
                   <tbody>
                     <template v-for="(schedule, index) in contact.schedules">
                       <tr
+                        :key="index"
                         v-chakra="{
                           ':hover': { bg: 'blue.50' },
                           '&:hover > td:last-child': {
                             display: 'table-cell'
                           }
                         }"
-                        :key="index"
                         cursor="pointer"
                         :data-text="`${translateDay(schedule.day)} ${schedule.startedAt} - ${schedule.finishedAt} ${schedule.meetingName}`"
                         @click="[onTextCopy($event), onShowToast()]"
@@ -236,26 +236,17 @@
 </template>
 
 <script>
+import { CBox, CFlex, CHeading, CIcon, CStack, CText } from '@chakra-ui/vue'
 import Banner from '@/components/Banner.vue'
 import BaseLayout from '@/components/BaseLayout.vue'
+import { contactQuery } from '@/graphql/queries'
 import Container from '@/components/Container.vue'
+import eventBus from '@/use/eventBus'
 import Navbar from '@/components/Navbar.vue'
 import { useTranslate, useClipboard } from '@/use/hooks'
-import eventBus from '@/use/eventBus'
-
-import {
-  CBox,
-  CFlex,
-  CHeading,
-  CIcon,
-  CLink,
-  CStack,
-  CText
-} from '@chakra-ui/vue'
-import { contactQuery } from '@/graphql/queries'
 
 export default {
-  name: 'contact',
+  name: 'Contact',
   components: {
     Banner,
     BaseLayout,
@@ -263,7 +254,6 @@ export default {
     CFlex,
     CHeading,
     CIcon,
-    CLink,
     Container,
     CStack,
     CText,
@@ -281,10 +271,10 @@ export default {
     }
   },
   mounted() {
-    eventBus.$on('hidden:banner', () => this.containerPaddingY = '4')
+    eventBus.$on('hidden:banner', () => { this.containerPaddingY = '4' })
   },
   methods: {
-    onTextCopy: function(event) {
+    onTextCopy(event) {
       this.copyFrom('#clipboard', event.currentTarget.dataset.text)
     },
     onShowToast() {

@@ -81,7 +81,11 @@
                   'block'  // md
                 ]"
               >
+
                 <c-link
+                  v-for="(link, index) in navbar.links"
+                  :key="index"
+                  :href="link.url"
                   color="gray.900"
                   px="3"
                   py="2"
@@ -95,9 +99,6 @@
                   :_focus="{
                     boxShadow: 'none'
                   }"
-                  :href="link.url"
-                  v-for="(link, index) in navbar.links"
-                  :key="index"
                 >{{ link.text }}</c-link>
               </c-stack>
             </c-stack>
@@ -116,6 +117,9 @@
             spacing="4"
           >
             <c-link
+              v-for="(link, index) in navbar.links"
+              :key="index"
+              :href="link.url"
               color="gray.900"
               :display="state.isVisible ? 'block' : 'none'"
               px="3"
@@ -127,9 +131,6 @@
               :_hover="{
                 bg: 'gray.200'
               }"
-              :href="link.url"
-               v-for="(link, index) in navbar.links"
-              :key="index"
             >{{ link.text }}</c-link>
           </c-stack>
         </c-box>
@@ -158,7 +159,7 @@ export default {
       default: 'white'
     }
   },
-  data () {
+  data() {
     const { state, toggleIsVisible } = useState()
 
     return {
