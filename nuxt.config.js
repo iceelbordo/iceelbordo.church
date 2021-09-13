@@ -3,7 +3,7 @@ import { customIcons, customTheme } from './custom-theme.js'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'iceelbordo.church',
+    title: process.env.PAGE_TITLE || 'Page Title',
     htmlAttrs: {
       lang: 'en'
     },
