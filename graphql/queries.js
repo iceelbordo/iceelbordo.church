@@ -26,7 +26,7 @@ export const homeQuery = gql`
 
 export const sermonsQuery = gql`
   query sermonsQuery($limit: Int = 25, $start: Int = 0) {
-    sermons(limit: $limit, start: $start) {
+    sermons(limit: $limit, start: $start, sort: "recordedAt:desc") {
       id,
       title,
       description,
@@ -47,7 +47,7 @@ export const sermonsCountQuery = gql`
 
 export const meetsQuery = gql`
   query meetsQuery($limit: Int = 25, $start: Int = 0) {
-    meets(limit: $limit, start: $start) {
+    meets(limit: $limit, start: $start, sort: "recordedAt:desc") {
       id,
       title,
       description,
