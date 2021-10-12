@@ -20,6 +20,12 @@
         {{ item.title }}
       </c-heading>
       <c-text
+        as="samp"
+        fontSize="xs"
+      >
+        {{ item.preacher.firstName }} {{ item.preacher.lastName }}
+      </c-text>
+      <c-text
         fontSize="md"
       >
         {{ item.description }}

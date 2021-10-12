@@ -29,6 +29,10 @@ export const sermonsQuery = gql`
     sermons(limit: $limit, start: $start, sort: "recordedAt:desc") {
       id,
       title,
+      preacher {
+        firstName,
+        lastName
+      },
       description,
       audio {
         url,
@@ -50,6 +54,10 @@ export const meetsQuery = gql`
     meets(limit: $limit, start: $start, sort: "recordedAt:desc") {
       id,
       title,
+      preacher {
+        firstName,
+        lastName
+      },
       description,
       video {
         provider,
