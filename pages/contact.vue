@@ -115,7 +115,7 @@
                       display: 'flex'
                     }
                   }"
-                  display="flex"
+                  :display="contact.email === null || contact.email === '' ? 'none' : 'flex'"
                   alignItems="center"
                   cursor="pointer"
                   py="2"
