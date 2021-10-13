@@ -38,7 +38,8 @@ export const sermonsQuery = gql`
         url,
         metadata
       }
-      recordedAt
+      recordedAt,
+      timeZone
     }
   }
 `
@@ -63,7 +64,8 @@ export const meetsQuery = gql`
         provider,
         embedID,
       }
-      recordedAt
+      recordedAt,
+      timeZone
     }
   }
 `

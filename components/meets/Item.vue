@@ -9,7 +9,7 @@
         as="samp"
         fontSize="xs"
       >
-        {{ `${ day() } ${ month() } ${ year() }` }}
+        {{ recordedAt() }}
       </c-text>
       <c-heading
         as="h2"
@@ -73,16 +73,38 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
   },
   data() {
-    const { day, month, year } = useDate({ value: this.item.recordedAt })
+    const { day, month, year, currentDateOf, diffDaysOf } = useDate({ value: this.item.recordedAt })
 
     return {
-      day, month, year
+      day, month, year, currentDateOf, diffDaysOf
     }
   },
   methods: {
+    recordedAt() {
+      if (this.index === 0) {
+        const currentDate = this.currentDateOf(this.item.timeZone)
+        const days = this.diffDaysOf(this.item.recordedAt, currentDate)
+        if (days === 0) {
+          return 'Hoy'
+        }
+        if (days === 1) {
+          return `Hace ${ days } día`
+        }
+        if (days !== 0) {
+          return `Hace ${ days } días`
+        }
+      }
+      if (this.index !== 0) {
+        return `${ this.day() } ${ this.month() } ${ this.year() }`
+      }
+    },
     onPlayClick(event) {
       const regexp = /svg|path/i
       if (event.target.hasAttribute('data-chakra-component') || regexp.test(event.target.tagName)) {

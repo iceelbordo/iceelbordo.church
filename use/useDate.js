@@ -21,6 +21,22 @@ export function useDate(jsonDate) {
 
   const year = () => date.getFullYear()
 
+  const diffDaysOf = (start, end) => {
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    const oneDay = 1000 * 60 * 60 * 24
+    const diffTime = endDate.getTime() - startDate.getTime()
+    const diffDays = Math.round(diffTime / oneDay)
+    return diffDays
+  }
+
+  const currentDateOf = (timeZone) => {
+    const localDate = new Date()
+    const formater = new Intl.DateTimeFormat('en-US', { timeZone: timeZone, year: 'numeric', month: '2-digit', day: '2-digit' })
+    const currentDate = formater.format(localDate)
+    return currentDate
+  }
+
   const timeOf = (duration)  => {
     const arr = []
     const hours = parseInt(totalHoursOf(duration))
@@ -48,6 +64,8 @@ export function useDate(jsonDate) {
     day,
     month,
     year,
+    diffDaysOf,
+    currentDateOf,
     timeOf,
     totalHoursOf,
     totalMinutesOf

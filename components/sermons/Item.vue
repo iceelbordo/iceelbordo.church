@@ -9,7 +9,7 @@
         as="samp"
         fontSize="xs"
       >
-        {{ `${ day() } ${ month() } ${ year() }` }}
+        {{ recordedAt() }}
       </c-text>
       <c-heading
         as="h2"
@@ -142,7 +142,7 @@ export default {
     }
   },
   data() {
-    const { day, month, year, timeOf, totalHoursOf, totalMinutesOf } = useDate({ value: this.item.recordedAt })
+    const { day, month, year, currentDateOf, diffDaysOf, timeOf, totalHoursOf, totalMinutesOf } = useDate({ value: this.item.recordedAt })
     const { howlState, play, pause, seek, playedHours, playedMinutes, playedSeconds } = useHowler({
       src: [this.item.audio.url],
       onprogress: this.onProgress,
@@ -150,7 +150,7 @@ export default {
     })
 
     return {
-      day, month, year, timeOf, totalHoursOf, totalMinutesOf,
+      day, month, year, currentDateOf, diffDaysOf, timeOf, totalHoursOf, totalMinutesOf,
       progressValue: 0,
       howlState, play, pause, seek, playedHours, playedMinutes, playedSeconds
     }
@@ -163,6 +163,24 @@ export default {
     }
   },
   methods: {
+    recordedAt() {
+      if (this.index === 0) {
+        const currentDate = this.currentDateOf(this.item.timeZone)
+        const days = this.diffDaysOf(this.item.recordedAt, currentDate)
+        if (days === 0) {
+          return 'Hoy'
+        }
+        if (days === 1) {
+          return `Hace ${ days } día`
+        }
+        if (days !== 0) {
+          return `Hace ${ days } días`
+        }
+      }
+      if (this.index !== 0) {
+        return `${ this.day() } ${ this.month() } ${ this.year() }`
+      }
+    },
     onTogglePlay(event) {
       if (!this.howlState.loaded) {
         return

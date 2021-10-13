@@ -20,8 +20,9 @@
         <list-of-meets>
           <item
             v-for="(item, index) in meets"
-            :key="index"
             :item="item"
+            :index="index"
+            :key="item.id"
           />
           <template name="scroll">
             <scroll-button

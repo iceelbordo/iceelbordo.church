@@ -22,9 +22,9 @@
           <list-of-sermons>
             <item
               v-for="(item, index) in sermons"
-              :key="item.id"
               :item="item"
               :index="index"
+              :key="item.id"
               :showControls="sermonIndex === index"
               @update:index="sermonIndex = $event"
             />
